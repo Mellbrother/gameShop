@@ -1,0 +1,51 @@
+version: "3"
+
+services:
+  mysql:
+    image: mysql:5.7.22
+    container_name: test_db
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql/mysql_data:/var/lib/mysql
+      - ./mysql/sqls:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_DATABASE: test_db
+      MYSQL_ROOT_PASSWORD: password
+      TZ: "Asia/Tokyo"
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+  api:
+    build: ./api
+    container_name: test_api
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./api:/src
+    environment:
+      - GO111MODULE=on
+    depends_on:
+      - mysql
+    command: sh ./wait.sh mysql go run main.go
+  event:
+    build: event
+    container_name: test_event
+    ports:
+      - "8081:8081"
+    volumes:
+      - ./event:/go/src
+    environment:
+      GETH_URL: "wss://ropsten.infura.io/ws/v3/f9422a9edc864c51b4d7d2e1c8fcdc3d"
+      GAME_SHOP_ADDRESS: "0xE39BcE1506dCE33D482F86051B3408d09F2cB06d"
+    depends_on:
+      - mysql
+    command: sh ./wait.sh mysql go run main.go
+    # command: sh ./wait.sh mysql 
+  frontend:
+    build: ./frontend
+    container_name: test_frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/usr/app
+      - /usr/app/node_modules
+    command: yarn start
