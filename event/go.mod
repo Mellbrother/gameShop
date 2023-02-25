@@ -12,9 +12,5 @@ require (
 	github.com/jinzhu/gorm v1.9.14
 	github.com/rs/cors v1.7.0 // indirect
 	github.com/shirou/gopsutil v2.20.5+incompatible // indirect
-	golang.org/dl v0.0.0-20200611200201-72429b14455f // indirect
-	golang.org/x/crypto v0.0.0-20200622213623-75b288015ac9 // indirect
-	golang.org/x/sys v0.0.0-20200625212154-ddb9806d33ae // indirect
-	gopkg.in/fatih/set.v0 v0.2.1 // indirect
-	gopkg.in/karalabe/cookiejar.v2 v2.0.0-20150724131613-8dcd6a7f4951 // indirect
+	golang.org/x/crypto v0.1.0 // indirect
 )
