@@ -10498,7 +10498,7 @@ styled-icons@^6.4.0:
     "@babel/runtime" "^7.3.0"
     "@emotion/is-prop-valid" "^0.7.3"
 
-styled-reset@^1.6.4:
+styled-reset@^1.7.1:
   version "1.7.1"
   resolved "https://registry.yarnpkg.com/styled-reset/-/styled-reset-1.7.1.tgz#2016e239d746d65deed8845b3b44cbd28ce6bf16"
   integrity sha512-o9Q3Y9nBZgdAn9kyR7vNhl3VMlml/0zYvd1i2KwJHnplXxT/uVhTr72YORf3wXklnUoCBussqOtv6jKRgSi9NQ==
